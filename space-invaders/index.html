@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="En">
+<head>
+    <meta charset="UTF-8"/>
+    <link href="assets/fav.ico" rel="icon">
+    <title>Tiny Graphics</title>
+</head>
+<body style="background: White; position: absolute; left: 50%; transform: translate(-50%);" >
+<!-- Begin typing your web page here. -->
+<!-- The following code embeds a WebGL canvas panel, loads certain scene(s), and displays panel(s) of their controls.-->
+<p
+        style = "position: fixed; z-index: 10; color: white; left: 15px; top: 10px; margin: 0; font-family: sans-serif; font-size: 14px;"
+>
+    <span>Score:</span> <span id="scoreEl">0</span>
+    <span>Lives: </span><span id="livesEl">3</span>
+    <span>Lasers: </span><span id="lasersEl">20</span>
+</p>
+<div class="canvas-widget" id="main-canvas"></div>
+<script type=module>
+    // ********************* THE ENTRY POINT OF YOUR WHOLE PROGRAM STARTS HERE *********************
+    // Indicate which element on the page you want the Canvas_Widget to replace with a 3D WebGL area:
+    const element_to_replace = document.querySelector("#main-canvas");
+    import {Main_Scene, Additional_Scenes, Canvas_Widget} from './main-scene.js';
+    // Import the file that defines a scene.
+    const scenes = [Main_Scene, ...Additional_Scenes].map(scene => new scene());
+    // This line creates your scene.
+    new Canvas_Widget(element_to_replace, scenes);
+</script>
+
+</body>
+</html>
